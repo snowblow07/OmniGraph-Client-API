@@ -1,0 +1,281 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    font-weight: 200;
+    font-size: 100%;
+    background: #F1F1F1;
+}
+
+*,
+html {
+    --primaryGradient: linear-gradient(93.12deg, #1d1129 0.52%, #1c181f 100%);
+    --secondaryGradient: linear-gradient(268.91deg, #3b3b3b -2.14%, #282828 99.69%);
+    --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
+    --primary: #19082b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    font-weight: 200;
+    font-size: 100%;
+    background: #3f3737;
+}
+
+*,
+html {
+    --primaryGradient: linear-gradient(93.12deg, #1d1129 0.52%, #1c181f 100%);
+    --secondaryGradient: linear-gradient(268.91deg, #3b3b3b -2.14%, #282828 99.69%);
+    --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
+    --primary: #19082b;
+}
+
+/* CHATBOX SUPPORT */
+.chatbox__support {
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    background: #767179;
+    width: 90vw;
+    /* Responsive width */
+    max-width: 390px;
+    /* Keeps it from getting too wide on big screens */
+    min-width: 280px;
+    /* Optional: Prevents it from getting too narrow on small screens */
+    height: 550px;
+    position: fixed;
+    bottom: 90px;
+    right: 45px;
+    z-index: 123456;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* CONTENT IS OPEN */
+.chatbox--active {
+    opacity: 1;
+    transform: translateX(0);
+    /* Bring back into view */
+}
+
+/* BUTTON */
+.chatbox__button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 123456;
+}
+
+.chatbox__button button,
+.chatbox__button button:focus,
+.chatbox__button button:visited {
+    padding: 10px;
+    background: white;
+    border: none;
+    outline: none;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+/* HEADER */
+.chatbox__header {
+    position: sticky;
+    top: 0;
+    z-index: 123456;
+    background: #312f2f;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: flex-start;
+    padding: 15px 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: var(--primaryBoxShadow);
+    background-size: 170px auto;
+    /* Resize proportionally */
+    background-repeat: no-repeat;
+    background-position: top right;
+    /* Position in the upper right corner */
+}
+
+.chatbox__header a {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 170px;
+    height: auto;
+}
+
+.chatbox__image--header {
+    margin-right: 10px;
+}
+
+.chatbox__heading--header {
+    font-size: 1rem;
+    color: rgb(132, 121, 121);
+}
+
+.chatbox__description--header {
+    font-size: 1rem;
+    color: rgb(132, 121, 121);
+}
+
+/* MESSAGES */
+.chatbox__messages {
+    margin-top: auto;
+    display: flex;
+    overflow-y: auto;
+    z-index: 123456;
+    flex-direction: column-reverse;
+    padding: 0 20px;
+}
+
+.messages__item {
+    margin-top: 10px;
+    background: #E0E0E0;
+    padding: 8px 12px;
+    max-width: 70%;
+}
+
+.messages__item--visitor,
+.messages__item--typing {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.messages__item--operator {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background: #3d3446;
+    line-height: 1.2;
+    color: white;
+    margin-left: auto;
+}
+
+.messages__item--visitor {
+    margin-right: auto;
+    line-height: 1.2;
+}
+
+/* FOOTER */
+.chatbox__footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+    background: var(--secondaryGradient);
+    box-shadow: var(--secondaryBoxShadow);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-top: 10px;
+}
+
+.chatbox__footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+    background: var(--secondaryGradient);
+    box-shadow: var(--secondaryBoxShadow);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-top: 10px;
+}
+
+.chatbox__footer textarea {
+    background-color: #c4c4c5;
+    width: 80%;
+    height: auto;
+    /* Allow the height to adjust based on content */
+    max-height: 100px;
+    /* Set a maximum height before scrolling is enabled */
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    /* Enable vertical scrolling when content exceeds max height */
+    resize: none;
+    /* Disable manual resizing by the user */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.chatbox__send--footer {
+    color: white;
+}
+
+.send__button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    border-radius: 6px;
+    border: none;
+
+    background: #6E6D70;
+    box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
+    color: #DFDEDF;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.send__button:focus {
+    box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+    outline: 0;
+}
+
+/* Optional improvement for mobile spacing */
+@media (max-width: 480px) {
+    .chatbox__support {
+        right: 10px;
+        bottom: 80px;
+        height: 85vh;
+        /* Take up more vertical space on small screens */
+    }
+}
+
+.chatbox__footer textarea {
+    width: 70%;
+}
+
+/* Optional: Add a support message */
+.support-message {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    display: none; /* Initially hidden */
+    z-index: 1000; /* Ensure it's on top */
+  }
+  
+  .chatbox__support.chatbox--active ~ .support-message {
+    display: none; /* Hide when chat is open */
+  }

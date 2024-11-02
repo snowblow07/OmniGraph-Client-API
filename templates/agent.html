@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super-Trainer - LiveChat widget v0.21</title>
+</head>
+
+<body>
+    <div style="color: #ffffff; padding: 20px; border-radius: 8px; font-family: sans-serif;">
+        <h1 style="color: #61dafb; text-align: center; margin-bottom: 10px;">
+            Super-Trainer - LiveChat
+        </h1>
+        <p style="text-align: center; font-size: 1.2em; margin-bottom: 20px;">
+            <strong>Lean Learning, Real-Time Results.</strong>
+        </p>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <div style="width: 80%; max-width: 600px;">
+                <p style="line-height: 1.6; text-align: justify;">
+                    Introducing an AI-powered training agent for your Business. This "Super Trainer" evolves with every customer interaction, employing lean principles to optimize learning. It analyzes real-time data, identifies knowledge gaps, and delivers targeted training modules, ensuring rapid proficiency and reduced operational friction.
+                </p>
+                <ul style="list-style-type: disc; margin-left: 20px; margin-top: 15px;">
+                    <li><strong>Dynamic Adaptation:</strong> Learns from actual user interactions for continuous improvement.</li>
+                    <li><strong>Just-in-Time Training:</strong> Delivers precise knowledge when and where it's needed.</li>
+                    <li><strong>Data-Driven Insights:</strong> Identifies and addresses training bottlenecks efficiently.</li>
+                    <li><strong>Minimized Downtime:</strong> Rapidly onboards new staff and reduces training time for new customers.</li>
+                    <li><strong>ARM architecture compatibility (coming soon iOS & Android):</strong> Enables downloading the complete model and running it seamlessly on handheld devices.</li>
+                </ul>
+    
+                <p style="margin-top: 20px; text-align: center;">
+                    <strong>Unlock the potential of your system with intelligent, lean training.</strong>
+                </p>
+    
+                <div style="text-align: right; margin-top: 30px;">
+                    <p style="font-size: 0.9em; color: #999;">
+                        For immediate assistance or to explore advanced functionalities, please engage the support icon located in the bottom right corner.<br>
+                        <br>
+                        SheenGreen 12-14-2024
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Live Chat Widget -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const chatWidget = document.createElement("div");
+            chatWidget.innerHTML = `
+            <div class="chatbox__support">
+                <div class="chatbox__header">
+                    
+                    </a>
+                    <div class="chatbox__image--header">
+                        <img src="{{ url_for('static', filename='images/manny.png') }}" alt="image">
+                    </div>
+                    <div class="chatbox__content--header">
+                        <h4 class="chatbox__heading--header">Super Trainer</h4>
+                        <p class="chatbox__description--header">Hermes-1.5-3B-Instruct-Q4_K_S</p>
+                    </div>
+                </div>
+                <div class="chatbox__messages">
+                    <div></div>
+                </div>
+                <div class="chatbox__footer">
+                    <textarea placeholder="Write a message..."></textarea>
+                    <button class="chatbox__send--footer send__button">Send</button>
+                </div>
+            </div>
+            <div class="chatbox__button">
+                <button><img src="{{ url_for('static', filename='images/chatbox-icon.svg') }}" width="36" height="29"/></button>
+            </div>
+        `;
+            document.body.appendChild(chatWidget);
+
+            const chatbot = new Chatbot();
+            chatbot.display();
+        });
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='gemini01.css') }}">
+    <script src="{{ url_for('static', filename='util/gemini01.js') }}"></script>
+
+</body>
+
+</html>
