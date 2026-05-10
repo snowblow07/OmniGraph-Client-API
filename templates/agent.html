@@ -1,85 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super-Trainer - LiveChat widget v0.21</title>
+    <title>OmniGraph - AI-Powered Graph Insights</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='gemini01.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <div style="color: #ffffff; padding: 20px; border-radius: 8px; font-family: sans-serif;">
-        <h1 style="color: #61dafb; text-align: center; margin-bottom: 10px;">
-            Super-Trainer - LiveChat
-        </h1>
-        <p style="text-align: center; font-size: 1.2em; margin-bottom: 20px;">
-            <strong>Lean Learning, Real-Time Results.</strong>
-        </p>
-        <div style="display: flex; align-items: center; justify-content: center;">
-            <div style="width: 80%; max-width: 600px;">
-                <p style="line-height: 1.6; text-align: justify;">
-                    Introducing an AI-powered training agent for your Business. This "Super Trainer" evolves with every customer interaction, employing lean principles to optimize learning. It analyzes real-time data, identifies knowledge gaps, and delivers targeted training modules, ensuring rapid proficiency and reduced operational friction.
-                </p>
-                <ul style="list-style-type: disc; margin-left: 20px; margin-top: 15px;">
-                    <li><strong>Dynamic Adaptation:</strong> Learns from actual user interactions for continuous improvement.</li>
-                    <li><strong>Just-in-Time Training:</strong> Delivers precise knowledge when and where it's needed.</li>
-                    <li><strong>Data-Driven Insights:</strong> Identifies and addresses training bottlenecks efficiently.</li>
-                    <li><strong>Minimized Downtime:</strong> Rapidly onboards new staff and reduces training time for new customers.</li>
-                    <li><strong>ARM architecture compatibility (coming soon iOS & Android):</strong> Enables downloading the complete model and running it seamlessly on handheld devices.</li>
-                </ul>
-    
-                <p style="margin-top: 20px; text-align: center;">
-                    <strong>Unlock the potential of your system with intelligent, lean training.</strong>
-                </p>
-    
-                <div style="text-align: right; margin-top: 30px;">
-                    <p style="font-size: 0.9em; color: #999;">
-                        For immediate assistance or to explore advanced functionalities, please engage the support icon located in the bottom right corner.<br>
-                        <br>
-                        SheenGreen 12-14-2024
-                    </p>
-                </div>
-            </div>
-        </div>
+    <div class="container">
+        <header class="hero">
+            <h1>OmniGraph Client & API</h1>
+            <p>Graph-Augmented Intelligence for Modern Applications</p>
+        </header>
+
+        <main class="content-section">
+            <p>
+                OmniGraph is a comprehensive ecosystem designed to deliver high-performance, context-aware insights through a seamless integration of Large Language Models and Graph Database technology. By leveraging the structural power of Neo4j and the reasoning capabilities of Google Gemini, OmniGraph provides a persistent, evolving knowledge base for real-time interactions.
+            </p>
+            
+            <ul class="feature-list">
+                <li><strong>Graph-Augmented Memory:</strong> Utilizes <strong>Neo4j</strong> to maintain complex conversation histories and relational context, ensuring interactions are always grounded in existing knowledge.</li>
+                <li><strong>AI Orchestration:</strong> Built with <strong>LangChain</strong> to manage sophisticated agentic workflows, enabling the system to adapt and evolve with every user interaction.</li>
+                <li><strong>Dual-Access Architecture:</strong> Features a robust <strong>RESTful API</strong> for mobile and external integration, alongside a responsive, interactive web client.</li>
+                <li><strong>Dynamic Session Management:</strong> Automatically handles multi-session tracking via unique identifiers, providing a personalized experience across platforms.</li>
+                <li><strong>Cross-Platform Vision:</strong> Designed with future-ready ARM compatibility in mind, targeting seamless deployment on iOS and Android handheld devices.</li>
+            </ul>
+
+            <p style="margin-top: 30px; text-align: center; font-weight: 400; color: var(--accent);">
+                Explore the future of intelligent systems through the OmniGraph interactive assistant.
+            </p>
+        </main>
+
+        <footer class="footer-info">
+            <p>
+                For technical inquiries or deeper exploration of the OmniGraph ecosystem, please engage with the AI assistant in the bottom right corner.<br>
+                <br>
+                &copy; 2024 OmniGraph Project
+            </p>
+        </footer>
     </div>
-    <!-- Live Chat Widget -->
+
+    <!-- Chat Widget Logic -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const chatWidget = document.createElement("div");
             chatWidget.innerHTML = `
             <div class="chatbox__support">
                 <div class="chatbox__header">
-                    
-                    </a>
                     <div class="chatbox__image--header">
-                        <img src="{{ url_for('static', filename='images/manny.png') }}" alt="image">
+                        <img src="{{ url_for('static', filename='images/manny.png') }}" alt="AI Assistant">
                     </div>
                     <div class="chatbox__content--header">
-                        <h4 class="chatbox__heading--header">Super Trainer</h4>
-                        <p class="chatbox__description--header">Hermes-1.5-3B-Instruct-Q4_K_S</p>
+                        <h4 class="chatbox__heading--header">OmniGraph Assistant</h4>
+                        <p class="chatbox__description--header">Powered by Gemini & Neo4j</p>
                     </div>
                 </div>
                 <div class="chatbox__messages">
                     <div></div>
                 </div>
                 <div class="chatbox__footer">
-                    <textarea placeholder="Write a message..."></textarea>
+                    <textarea placeholder="Ask me about OmniGraph..."></textarea>
                     <button class="chatbox__send--footer send__button">Send</button>
                 </div>
             </div>
             <div class="chatbox__button">
-                <button><img src="{{ url_for('static', filename='images/chatbox-icon.svg') }}" width="36" height="29"/></button>
+                <button><img src="{{ url_for('static', filename='images/chatbox-icon.svg') }}" width="30" height="30" alt="Chat"/></button>
             </div>
         `;
             document.body.appendChild(chatWidget);
 
-            const chatbot = new Chatbot();
-            chatbot.display();
+            // Initialize Chatbot from static/util/gemini01.js
+            if (typeof Chatbot !== 'undefined') {
+                const chatbot = new Chatbot();
+                chatbot.display();
+            } else {
+                console.error("Chatbot class not found. Ensure gemini01.js is loaded correctly.");
+            }
         });
     </script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='gemini01.css') }}">
     <script src="{{ url_for('static', filename='util/gemini01.js') }}"></script>
-
 </body>
-
 </html>

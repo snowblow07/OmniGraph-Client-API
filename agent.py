@@ -21,6 +21,8 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 import datetime
 
+import os
+from dotenv import load_dotenv
 #load the environment variables
 load_dotenv()
 
@@ -29,7 +31,6 @@ NEO4J_URI = os.environ.get("NEO4J_URI", "your_neo4j_uri_here")
 NEO4J_USER = os.environ.get("NEO4J_USER", "neo4j")
 NEO4J_PASSWORD = os.environ.get("NEO4J_PASSWORD", "your_neo4j_password_here")
 
-import os
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 #from langchain_google_vertexai import ChatVertexAI
 
