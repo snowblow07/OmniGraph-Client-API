@@ -1,107 +1,94 @@
-# OmniGraph Client & API
+# OmniGraph-Client-API
 
-**OmniGraph Client & API** is a comprehensive ecosystem designed for web and mobile clients to deliver graph-augmented insights through a powerful RESTful API and an interactive web interface. At its core, the project features an AI-powered "Super Trainer" agent that leverages LangChain and Google's Gemini models, with a Neo4j graph database backend for persistent, context-aware conversation history.
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Tech Stack](https://img.shields.io/badge/stack-LangChain%20%7C%20Gemini%20%7C%20Neo4j-red)
 
-## 🚀 Overview
+## Overview
+**OmniGraph-Client-API** is a high-performance RAG (Retrieval-Augmented Generation) engine designed to provide context-aware AI responses. By integrating LangChain with Google Gemini and Neo4j, this API orchestrates a sophisticated pipeline that manages long-term memory, message trimming, and graph-based context retrieval to deliver exceptionally relevant interactions.
 
-This project provides a seamless integration between advanced LLM capabilities and graph database technology. It is designed to be a "lean learning" system that evolves with user interactions, making it ideal for business training, customer support, and real-time knowledge delivery.
+## System Architecture
+As the "Intelligence & RAG Middleware," this API coordinates the flow of data between the user interface and the persistent storage layer.
 
-### Key Features
+![System Architecture](docs/assets/system_architecture.jpg)
+*Figure 1: High-level architecture of the OmniGraph Ecosystem.*
 
--   **🧠 AI-Powered Agent:** Built with LangChain and Google Gemini (Flash/Pro) for high-quality, context-aware responses.
--   **🕸️ Graph-Augmented Memory:** Uses **Neo4j** to store and retrieve chat histories, ensuring that every session is persistent and structurally organized.
--   **🌐 Dual-Access Ecosystem:**
-    -   **Web Client:** A responsive, interactive chat widget that can be easily integrated into any web application.
-    -   **RESTful API:** A robust backend API (`/agent`) that allows mobile and external clients to consume the agent's services.
--   **🔄 Dynamic Session Management:** Automatically handles multi-session tracking via unique identifiers and browser cookies.
--   **⚡ Real-Time Feedback:** Includes a polished UI with typing animations and smooth message transitions for an enhanced user experience.
--   **📱 Mobile Ready:** Designed with a vision for ARM architecture compatibility, enabling future deployment on iOS and Android devices.
+## The Ecosystem Context
+The API serves as the "brain" of the OmniGraph ecosystem. It bridges the gap between the **ChatBot-iOS-Application** (the client) and the **Flask-Graph-Content-Manager** (the admin layer).
+- **Inbound:** It receives queries from the iOS client via secure POST requests.
+- **Processing:** It retrieves session history and relevant context from the Neo4j graph database.
+- **Outbound:** It returns optimized AI responses while updating the graph with new interaction data, ensuring a persistent and evolving memory.
 
-## 🛠️ Tech Stack
+## Visualizing the Knowledge Graph
+The API leverages a graph-based schema to map domains to content templates, allowing the RAG pipeline to traverse relationships rather than just performing keyword searches.
 
--   **Backend:** Python, [Flask](https://flask.palletsprojects.com/), [Flask-CORS](https://flask-cors.readthedocs.io/)
--   **AI Framework:** [LangChain](https://www.langchain.com/), [Google Generative AI](https://ai.google.dev/) (Gemini)
--   **Database:** [Neo4j](https://neo4j.com/) (Graph Database)
--   **Frontend:** Vanilla HTML5, CSS3, JavaScript (ES6+)
--   **Environment:** [Python-Dotenv](https://saurabh-kumar.com/python-dotenv/) for secure configuration
+![Neo4j Graph Schema](docs/assets/OmniGraph-Client-API-Graph.png)
+*Figure 2: Active Neo4j nodes showing the relationship between Domains and Templates.*
 
-## 📂 Project Structure
+## Key Features
+- **Retrieval-Augmented Generation (RAG):** Combines LLM capabilities with a private graph knowledge base for grounded responses.
+- **Persistent Graph Memory:** Uses Neo4j to store and retrieve chat history, allowing for truly conversational AI.
+- **Advanced Context Management:** Implements message trimming and windowing to optimize token usage and maintain relevance.
+- **Google Gemini Integration:** Leverages the latest Gemini models for high-reasoning and creative generation.
+- **Cross-Origin Support:** Fully configured with CORS for seamless integration with mobile and web clients.
+- **Visitor Tracking:** Captures IP and session metadata to build detailed interaction graphs.
 
-```text
-.
-├── agent.py            # Core AI logic, LangChain orchestration, and Neo4j integration
-├── app.py              # Flask application and RESTful API endpoints
-├── wsgi.py             # WSGI entry point for production deployment
-├── requirements.txt    # Project dependencies
-├── static/
-│   ├── gemini01.css    # Modern UI styling for the chat widget
-│   ├── images/         # UI assets and icons
-│   └── util/
-│       └── gemini01.js # Client-side chatbot logic and API communication
-└── templates/
-    └── agent.html      # Main web interface and landing page
-```
+## Tech Stack
+- **Backend Framework:** Flask, Python 3.x
+- **AI Framework:** LangChain (Core, Community, Google GenAI)
+- **LLM:** Google Gemini Flash/Pro
+- **Graph Database:** Neo4j
+- **Orchestration:** RunnableWithMessageHistory, TrimMessages
 
-## ⚙️ Installation & Setup
+## Getting Started
 
-### Prerequisites
+### Local Setup
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/OmniGraph-Client-API.git
+   cd OmniGraph-Client-API
+   ```
 
--   Python 3.8+
--   A Neo4j Database instance (e.g., [Neo4j AuraDB](https://neo4j.com/cloud/aura/))
--   A Google AI API Key (Gemini)
+2. **Setup environment:**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   ```
 
-### Steps
+3. **Configuration:**
+   Create a `.env` file:
+   ```env
+   GOOGLE_API_KEY=your_gemini_api_key
+   NEO4J_URI=neo4j+s://your-db-id.databases.neo4j.io
+   NEO4J_USER=neo4j
+   NEO4J_PASSWORD=your_password
+   ```
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/manuel-rosero/omnigraph-client-api.git
-    cd omnigraph-client-api
-    ```
+4. **Start the API:**
+   ```bash
+   python app.py
+   ```
+   The API will listen on `http://0.0.0.0:5050`.
 
-2.  **Create and activate a virtual environment:**
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-    ```
+## Usage / API Reference
+### Invoke Agent
+**Endpoint:** `POST /agent`
 
-3.  **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4.  **Configure Environment Variables:**
-    Create a `.env` file in the root directory and add your credentials:
-    ```env
-    GOOGLE_API_KEY=your_google_api_key_here
-    NEO4J_URI=your_neo4j_uri_here
-    NEO4J_USER=neo4j
-    NEO4J_PASSWORD=your_neo4j_password_here
-    ```
-
-5.  **Run the application:**
-    ```bash
-    python app.py
-    ```
-    The app will be available at `http://localhost:5050`.
-
-## 📡 API Usage
-
-The system exposes a POST endpoint for external clients:
-
-**Endpoint:** `/agent`
-**Method:** `POST`
-**Body:**
+**Request Body:**
 ```json
 {
-  "message": "Hello, how can you help me today?",
-  "config": "unique-session-id"
+  "message": "Tell me about the recent project updates.",
+  "config": "session_id_123"
 }
 ```
 
-## 👤 Author
+**Response:**
+```json
+{
+  "answer": "The recent updates include..."
+}
+```
 
-**Manuel Rosero Puente**
--   GitHub: [@snowblow07](https://github.com/snowblow07/OmniGraph-Client-API) 
--   LinkedIn: [Manuel Rosero Puente](https://www.linkedin.com/in/mroserop)
-
----
+## License
+This project is licensed under the MIT License.
