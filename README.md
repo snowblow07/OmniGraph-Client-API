@@ -45,14 +45,14 @@ The API leverages a graph-based schema to map domains to content templates, allo
 ### Local Setup
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/OmniGraph-Client-API.git
+   git clone https://github.com/snowblow07/OmniGraph-Client-API.git
    cd OmniGraph-Client-API
    ```
 
 2. **Setup environment:**
    ```bash
-   python -m venv venv
-   source venv/bin/activate
+   python -m venv .venv
+   source .venv/bin/activate
    pip install -r requirements.txt
    ```
 
